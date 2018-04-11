@@ -102,7 +102,7 @@ static uint8_t buffer[SH1106_LCDHEIGHT * SH1106_LCDWIDTH / 8] = {
 #endif
 };
 
-
+#define swap(a, b) { int16_t t = a; a = b; b = t; }
 
 // the most basic function, set a single pixel
 void Adafruit_SH1106::drawPixel(int16_t x, int16_t y, uint16_t color) {
@@ -374,7 +374,7 @@ void Adafruit_SH1106::SH1106_command(uint8_t c) {
 // Activate a right handed scroll for rows start through stop
 // Hint, the display is 16 rows tall. To scroll the whole display, run:
 // display.scrollright(0x00, 0x0F) 
-void Adafruit_SH1106::startscrollright(uint8_t start, uint8_t stop){
+/*void Adafruit_SH1106::startscrollright(uint8_t start, uint8_t stop){
   SH1106_command(SH1106_RIGHT_HORIZONTAL_SCROLL);
   SH1106_command(0X00);
   SH1106_command(start);
@@ -457,7 +457,7 @@ void Adafruit_SH1106::dim(boolean dim) {
   // it is useful to dim the display
   SH1106_command(SH1106_SETCONTRAST);
   SH1106_command(contrast);
-}
+}*/
 
 void Adafruit_SH1106::SH1106_data(uint8_t c) {
   if (sid != -1)
